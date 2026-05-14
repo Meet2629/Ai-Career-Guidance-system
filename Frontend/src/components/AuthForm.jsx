@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './AuthForm.css';
 import { FaUser, FaLock, FaGoogle, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // <-- Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const AuthForm = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -13,7 +13,7 @@ const AuthForm = () => {
     confirmPassword: ''
   });
 
-  const navigate = useNavigate(); // <-- Initialize navigate
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -37,7 +37,7 @@ const AuthForm = () => {
           password
         });
         alert(res.data.message || "Registered successfully!");
-        setIsSignUp(false); // <-- Switch to login form after successful registration
+        setIsSignUp(false);
       } catch (err) {
         alert(err.response?.data?.message || "Registration failed!");
       }
@@ -47,8 +47,9 @@ const AuthForm = () => {
           email,
           password
         });
+        localStorage.setItem('token', res.data.token || 'logged_in'); // save login state
         alert(res.data.message || "Logged in successfully!");
-        navigate('/Dashboard'); 
+        navigate('/');  // redirect to home
       } catch (err) {
         alert(err.response?.data?.message || "Login failed!");
       }
@@ -58,14 +59,12 @@ const AuthForm = () => {
   return (
     <div className="auth-container">
       <div className="auth-box">
-        {/* Left Panel */}
         <div className="left-panel">
           <h2>Hello, Welcome!</h2>
-          <p>Don’t have an account?</p>
+          <p>Don't have an account?</p>
           <button onClick={() => setIsSignUp(true)}>Register</button>
         </div>
 
-        {/* Right Panel */}
         <div className="right-panel">
           <h2>{isSignUp ? 'Register' : 'Login'}</h2>
           <form onSubmit={handleSubmit}>

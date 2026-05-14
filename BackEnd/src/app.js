@@ -34,6 +34,10 @@ app.use('/api/ai-pathway', aiPathwayRoutes); // main route for AI roadmap
 const aiRoutes = require('./routes/ai.routes');
 app.use('/ai', aiRoutes); // fallback or additional AI-related endpoints
 
+const aiRoutesResume = require('./routes/aiRoutesResume');
+
+app.use('/api/resume-ai', aiRoutesResume);
+
 // MongoDB connection
 const connectDB = async () => { 
   try {

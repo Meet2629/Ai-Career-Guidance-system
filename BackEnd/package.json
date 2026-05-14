@@ -11,13 +11,18 @@
   "description": "",
   "dependencies": {
     "@google/generative-ai": "^0.22.0",
+    "axios": "^1.16.0",
     "backend": "file:",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^4.21.2",
+    "form-data": "^4.0.5",
+    "groq-sdk": "^1.1.2",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^7.1.1",
     "mongoose": "^8.13.2",
+    "multer": "^2.1.1",
     "prismjs": "^1.30.0"
   }
 }
